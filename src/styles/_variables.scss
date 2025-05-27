@@ -1,0 +1,21 @@
+$color-primary: #0052d9;
+$color-accent: #ff3b57;
+$color-bg: #F6F7FA;
+$color-white: #ffffff;
+$color-text: #222;
+$color-border: #e5e7eb;
+$color-error: #F81155;
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-accent: #{$color-accent};
+  --color-bg: #F6F7FA;
+  --color-white: #{$color-white};
+  --color-text: #222;
+  --color-border: #{$color-border};
+  --color-error: #F81155;
+  --radius: 10px;
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+$font-main: 'Inter', Arial, sans-serif; 
