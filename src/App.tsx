@@ -168,8 +168,9 @@ const App: React.FC = () => {
           <div className="modal-groups__window">
             <div className="modal-groups__header">
               <span>Удалить контакт?</span>
-              <button className="modal-groups__close" onClick={() => setDeleteContact(null)}>
-                <X size={18} />
+              
+              <button className="contact-form__close" onClick={() => setDeleteContact(null)}>
+                <X size={24} />
               </button>
             </div>
             <div className="modal-groups__body">
