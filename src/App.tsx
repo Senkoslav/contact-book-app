@@ -8,11 +8,6 @@ import GroupAccordion from './components/GroupAccordion'
 import GroupManagerModal from './components/GroupManagerModal'
 import { BookUser, Plus, X, CheckCircle } from 'lucide-react'
 
-const DEFAULT_GROUPS = [
-  { id: 'friends', name: 'Друзья' },
-  { id: 'colleagues', name: 'Коллеги' },
-]
-
 const manager = new ContactManager()
 
 const App: React.FC = () => {
@@ -25,9 +20,6 @@ const App: React.FC = () => {
   const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {
-    if (manager.getGroups().length === 0) {
-      DEFAULT_GROUPS.forEach(g => manager.addGroup(new Group(g)))
-    }
     setGroups(manager.getGroups())
     setContacts(manager.getContacts())
   }, [])
@@ -132,16 +124,22 @@ const App: React.FC = () => {
         </header>
         <main className="main">
           <div className="group-list">
-            {groups.map((group, idx) => (
-              <GroupAccordion
-                key={group.id}
-                group={group}
-                contacts={contacts.filter(c => c.group === group.id)}
-                defaultOpen={idx === 0}
-                onEdit={handleEditContact}
-                onDelete={handleDeleteContact}
-              />
-            ))}
+            {groups.length > 0 ? (
+              groups.map((group, idx) => (
+                <GroupAccordion
+                  key={group.id}
+                  group={group}
+                  contacts={contacts.filter(c => c.group === group.id)}
+                  defaultOpen={idx === 0}
+                  onEdit={handleEditContact}
+                  onDelete={handleDeleteContact}
+                />
+              ))
+            ) : (
+              <div className="contact-list__empty">
+                Список контактов пуст
+              </div>
+            )}
           </div>
         </main>
       </div>

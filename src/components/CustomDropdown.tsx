@@ -50,18 +50,24 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({ value, onChange, option
       {isOpen && (
         <div className="custom-dropdown__list-container">
           <ul className="custom-dropdown__list">
-            {options.map(option => (
-              <li
-                key={option.id}
-                className={`custom-dropdown__option${option.id === value ? ' custom-dropdown__option--selected' : ''}`}
-                onClick={() => {
-                  onChange(option.id);
-                  setOpen(false);
-                }}
-              >
-                {option.name}
+            {options.length > 0 ? (
+              options.map(option => (
+                <li
+                  key={option.id}
+                  className={`custom-dropdown__option${option.id === value ? ' custom-dropdown__option--selected' : ''}`}
+                  onClick={() => {
+                    onChange(option.id);
+                    setOpen(false);
+                  }}
+                >
+                  {option.name}
+                </li>
+              ))
+            ) : (
+              <li className="custom-dropdown__empty">
+                Нет доступных групп. Создайте группу в меню "Группы"
               </li>
-            ))}
+            )}
           </ul>
         </div>
       )}

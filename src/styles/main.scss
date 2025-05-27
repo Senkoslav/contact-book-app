@@ -748,3 +748,116 @@ body {
     min-width: 0;
   }
 }
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  
+  &__control {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      border-color: #d1d5db;
+    }
+  }
+
+  &--open &__control {
+    border-color: $color-primary;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+
+  &--error &__control {
+    border-color: #ef4444;
+    background: #fff;
+
+    &:hover {
+      border-color: #ef4444;
+    }
+  }
+
+  &--error.custom-dropdown--open &__control {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(#ef4444, 0.1);
+  }
+
+  &__value {
+    color: #000;
+  }
+
+  &__arrow {
+    font-size: 14px;
+    color: #9ca3af;
+    transition: transform 0.2s;
+  }
+
+  &--open &__arrow {
+    transform: rotate(180deg);
+  }
+
+  &__list-container {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__option {
+    padding: 10px 16px;
+    font-size: 15px;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    display: block;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background: #f3f4f6;
+    }
+
+    &--selected {
+      background: #f0f7ff;
+      color: $color-primary;
+      font-weight: 500;
+
+      &:hover {
+        background: #e5f1ff;
+      }
+    }
+  }
+
+  &__empty {
+    padding: 16px;
+    font-size: 14px;
+    color: #6b7280;
+    text-align: center;
+    cursor: default;
+    width: 100%;
+    display: block;
+  }
+}
